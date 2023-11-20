@@ -1,18 +1,11 @@
 <h1>ExpNo 7 : Solve Cryptarithmetic Problem,a CSP(Constraint Satisfaction Problem) using Python</h1> 
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: Paul Samson S</h3>
+<h3>Register Number: 212222230104</h3>
 <H3>Aim:</H3>
 <p>
     To solve Cryptarithmetic Problem,a CSP(Constraint Satisfaction Problem) using Python
 </p>
 <h3>Procedure:</h3>
-Input and Output
-<br>Input:
-This algorithm will take three words.
-<br> B A S E<br>
-    B A L L<br>
-           ----------<br>
-           G A M E S<br>
 
 Output:
 It will show which letter holds which number from 0 – 9.
@@ -78,5 +71,44 @@ MORE = 1085<br>
 <hr>
 MONEY = 10652<br>
 <hr>
+
+### PROGRAM 
+```
+from itertools import permutations
+def solve_cryptarithmetic():
+    for perm in permutations(range(10), 8):
+        S, E, N, D, M, O, R, Y = perm
+        # Check for leading zeros
+        if S == 0 or M == 0:
+            continue
+        # Check the equation constraints
+        SEND = 1000 * S + 100 * E + 10 * N + D
+        MORE = 1000 * M + 100 * O + 10 * R + E
+        MONEY = 10000 * M + 1000 * O + 100 * N + 10 * E + Y
+        if SEND + MORE == MONEY:
+            return SEND, MORE, MONEY
+    return None
+solution = solve_cryptarithmetic()
+if solution:
+    SEND, MORE, MONEY = solution
+    print(f'SEND = {SEND}')
+    print(f'MORE = {MORE}')
+    print(f'MONEY = {MONEY}')
+else:
+    print("No solution found.")
+```
+Input and Output
+<br>Input:
+This algorithm will take three words.
+<br> B A S E<br>
+    B A L L<br>
+           ----------<br>
+           G A M E S<br>
+
+
+### OUTPUT
+![Screenshot 2023-11-02 135504](https://github.com/syedmokthiyar/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/118787294/d8ea4c78-576d-45c3-aae8-2ee6dbd8ed34)
+
+
 <h2>Result:</h2>
 <p> Thus a Cryptarithmetic Problem was solved using Python successfully</p>
